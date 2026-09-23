@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fuga de Capital</title>
+<title>Control de Gastos</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Fuga de Capital">
+<meta name="apple-mobile-web-app-title" content="Control de Gastos">
 <meta name="theme-color" content="#059669">
 <style>
   :root {
@@ -2956,7 +2956,7 @@ function buildReportText(ctx) {
   const line = "\u2500".repeat(46);
   const fijosActivos = (gastosFijos || []).filter((i) => i.activo && i.costo > 0);
   const rows = [];
-  rows.push("SIMULADOR DE FUGA DE CAPITAL");
+  rows.push("CONTROL DE GASTOS");
   rows.push("Reporte financiero personal");
   rows.push((/* @__PURE__ */ new Date()).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" }));
   rows.push(`Moneda: ${currentCurrency}`);
@@ -3210,7 +3210,7 @@ function App() {
     () => calcPlanRescate(ingreso, totalMensual, totalGastosFijos, ahorroReal),
     [ingreso, totalMensual, totalGastosFijos, ahorroReal]
   );
-  return /* @__PURE__ */ React.createElement("div", { className: "app-shell" }, /* @__PURE__ */ React.createElement("header", { className: "app-header" }, /* @__PURE__ */ React.createElement("div", { className: "app-header-mark" }, /* @__PURE__ */ React.createElement("svg", { viewBox: "0 0 40 40", width: "34", height: "34", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("circle", { cx: "20", cy: "20", r: "19", className: "mark-ring", fill: "none", strokeWidth: "2" }), /* @__PURE__ */ React.createElement("path", { d: "M13 24c2-7 5-11 7-14 2 5 1 8 3 8s3-3 3-3c1 4-1 9-5 9-3 0-4-2-4-2", className: "mark-drop", fill: "none", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }))), /* @__PURE__ */ React.createElement("div", { className: "app-header-title" }, /* @__PURE__ */ React.createElement("h1", null, "Simulador de Fuga de Capital"), /* @__PURE__ */ React.createElement("p", null, "Detecta tus gastos hormiga y descubre su verdadero coste de oportunidad.")), /* @__PURE__ */ React.createElement("div", { className: "app-header-actions" }, /* @__PURE__ */ React.createElement(ProfileSwitch, { value: profile, onChange: setProfile }), /* @__PURE__ */ React.createElement(CurrencySelect, { value: moneda, onChange: setMoneda }))), /* @__PURE__ */ React.createElement("main", null, safeActiveTab === 0 && /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "app-shell" }, /* @__PURE__ */ React.createElement("header", { className: "app-header" }, /* @__PURE__ */ React.createElement("div", { className: "app-header-mark" }, /* @__PURE__ */ React.createElement("svg", { viewBox: "0 0 40 40", width: "34", height: "34", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("circle", { cx: "20", cy: "20", r: "19", className: "mark-ring", fill: "none", strokeWidth: "2" }), /* @__PURE__ */ React.createElement("path", { d: "M13 24c2-7 5-11 7-14 2 5 1 8 3 8s3-3 3-3c1 4-1 9-5 9-3 0-4-2-4-2", className: "mark-drop", fill: "none", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }))), /* @__PURE__ */ React.createElement("div", { className: "app-header-title" }, /* @__PURE__ */ React.createElement("h1", null, "Control de Gastos"), /* @__PURE__ */ React.createElement("p", null, "Detecta tus gastos hormiga y descubre su verdadero coste de oportunidad.")), /* @__PURE__ */ React.createElement("div", { className: "app-header-actions" }, /* @__PURE__ */ React.createElement(ProfileSwitch, { value: profile, onChange: setProfile }), /* @__PURE__ */ React.createElement(CurrencySelect, { value: moneda, onChange: setMoneda }))), /* @__PURE__ */ React.createElement("main", null, safeActiveTab === 0 && /* @__PURE__ */ React.createElement(
     TabHoy,
     {
       ingreso,
