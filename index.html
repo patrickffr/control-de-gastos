@@ -3244,18 +3244,40 @@ function renderMonthSummaryCanvas(ctx, monthKey) {
   );
   return canvas;
 }
-function downloadMonthlyImage(ctx, monthKey) {
+async function downloadMonthlyImage(ctx, monthKey) {
   try {
     const canvas = renderMonthSummaryCanvas(ctx, monthKey);
-    const dataUrl = canvas.toDataURL("image/png");
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+    if (!blob) throw new Error("no-blob");
+    const filename = `control-de-gastos-${monthKey}.png`;
+    let file = null;
+    try {
+      file = new File([blob], filename, { type: "image/png" });
+    } catch (e) {
+      file = null;
+    }
+    if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: "Control de Gastos",
+          text: `Resumen de ${monthKeyLabel(monthKey)} — Control de Gastos`
+        });
+        return;
+      } catch (shareErr) {
+        if (shareErr && shareErr.name === "AbortError") return;
+      }
+    }
+    const blobUrl = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = dataUrl;
-    a.download = `control-de-gastos-${monthKey}.png`;
+    a.href = blobUrl;
+    a.download = filename;
     a.target = "_blank";
     a.rel = "noopener";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 3e4);
   } catch (e) {
   }
 }
