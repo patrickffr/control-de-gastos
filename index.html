@@ -155,7 +155,7 @@
   .app-shell {
     max-width: 860px;
     margin: 0 auto;
-    padding: 22px 16px calc(96px + env(safe-area-inset-bottom, 0px));
+    padding: calc(22px + env(safe-area-inset-top, 0px)) 16px calc(96px + env(safe-area-inset-bottom, 0px));
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -393,12 +393,21 @@
   .expense-monthly { font-size: 0.78rem; color: var(--red-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
   .expense-row-controls {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: space-between;
     gap: 10px;
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px dashed var(--border);
     flex-wrap: wrap;
+  }
+  .expense-row-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
   }
   .ctrl-label {
     display: flex;
@@ -1128,6 +1137,8 @@
   @media (max-width: 480px) {
     .expense-row-controls { gap: 8px; }
     .ctrl-label-freq { margin-left: 0; width: 100%; order: 5; }
+    .expense-row { padding: 10px 10px; }
+    .expense-row-main { gap: 8px; }
   }
 
   .pwa-install-fab {
@@ -2516,6 +2527,15 @@ function FixedExpenseRow({ item, onUpdate, onRemove }) {
       "aria-label": "Nombre del gasto fijo"
     }
   )), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      type: "button",
+      className: "icon-btn-ghost",
+      "aria-label": `Eliminar ${item.nombre}`,
+      onClick: onRemove
+    },
+    /* @__PURE__ */ React.createElement(Icon, { name: "trash", size: 16 })
+  )), /* @__PURE__ */ React.createElement("div", { className: "expense-row-controls" }, /* @__PURE__ */ React.createElement(
     NumberField,
     {
       value: item.costo,
@@ -2525,23 +2545,14 @@ function FixedExpenseRow({ item, onUpdate, onRemove }) {
       ariaLabel: `Coste mensual de ${item.nombre}`,
       onChange: (v) => onUpdate({ ...item, costo: v })
     }
-  ), /* @__PURE__ */ React.createElement(
+  ), /* @__PURE__ */ React.createElement("label", { className: "expense-row-toggle" }, /* @__PURE__ */ React.createElement("span", null, "Activo"), /* @__PURE__ */ React.createElement(
     Toggle,
     {
       checked: item.activo,
       onChange: (v) => onUpdate({ ...item, activo: v }),
       label: `Activar ${item.nombre}`
     }
-  ), /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      type: "button",
-      className: "icon-btn-ghost",
-      "aria-label": `Eliminar ${item.nombre}`,
-      onClick: onRemove
-    },
-    /* @__PURE__ */ React.createElement(Icon, { name: "trash", size: 16 })
-  )));
+  ))));
 }
 function AddFixedExpenseForm({ onAdd, onCancel }) {
   const [nombre, setNombre] = useState("");
