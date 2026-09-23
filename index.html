@@ -1270,10 +1270,11 @@
 
   .pwa-install-arrow {
     position: fixed;
-    left: 50%;
+    right: 6px;
+    left: auto;
     bottom: 6px;
     z-index: 10001;
-    transform: translateX(-50%);
+    transform: none;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -1314,11 +1315,21 @@
 
     <div class="pwa-install-step">
       <div class="pwa-install-step-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+      </div>
+      <div class="pwa-install-step-body">
+        <strong>1. Toca el icono ⋯</strong>
+        <span>Los tres puntos, abajo a la derecha en la barra de Safari.</span>
+      </div>
+    </div>
+
+    <div class="pwa-install-step">
+      <div class="pwa-install-step-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M5 20h14"/></svg>
       </div>
       <div class="pwa-install-step-body">
-        <strong>1. Toca el icono de compartir</strong>
-        <span>Está abajo en la barra de Safari (el cuadrado con la flecha hacia arriba).</span>
+        <strong>2. Toca "Compartir"</strong>
+        <span>Es la primera opción del menú que se abre.</span>
       </div>
     </div>
 
@@ -1327,8 +1338,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
       </div>
       <div class="pwa-install-step-body">
-        <strong>2. Busca "Añadir a pantalla de inicio"</strong>
-        <span>Desliza hacia abajo en la lista de opciones hasta encontrarla.</span>
+        <strong>3. Busca "Añadir a pantalla de inicio"</strong>
+        <span>Si no la ves, toca antes "Ver más" para desplegar todas las opciones.</span>
       </div>
     </div>
 
@@ -1337,7 +1348,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       </div>
       <div class="pwa-install-step-body">
-        <strong>3. Toca "Añadir"</strong>
+        <strong>4. Toca "Añadir"</strong>
         <span>Arriba a la derecha. Listo — el icono ya está en tu pantalla de inicio.</span>
       </div>
     </div>
@@ -1348,7 +1359,7 @@
 
 <div id="pwaInstallArrow" class="pwa-install-arrow">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
-  Comparte desde aquí
+  Toca aquí ⋯
 </div>
 
 <script>
